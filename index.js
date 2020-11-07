@@ -4,17 +4,32 @@
 
 import { Navigation } from "react-native-navigation";
 import React  from 'react';
-import { View , Text, StyleSheet } from 'react-native';
+import { View , Text, StyleSheet, Button } from 'react-native';
 import App from './App';
 
+// Home screen declaration
 const HomeScreen = (props) => {
     return (
       <View style={styles.root}>
         <Text>Hello React Native Navigation 👋</Text>
+        <Button
+          title='Push Settings Screen'
+          color='#710ce3'
+          onPress={() => Navigation.push(props.componentId, {
+            component: {
+              name: 'Settings',
+              options: {
+                topBar: {
+                  title: {
+                    text: 'Settings'
+                  }
+                }
+              }
+            }
+          })}/>
       </View>
     );
   };
-
   HomeScreen.options = {
     topBar: {
       title: {
@@ -25,9 +40,53 @@ const HomeScreen = (props) => {
         color: '#4d089a'
       }
     }
-}
+  };
   
+  // Settings screen declaration - this is the screen we'll be pushing into the stack
+  const SettingsScreen = () => {
+    return (
+      <View style={styles.root}>
+        <Text>Settings Screen</Text>
+      </View>
+    );
+  }
+  
+  Navigation.registerComponent('Home', () => HomeScreen);
+  Navigation.registerComponent('Settings', () => SettingsScreen);
 
+  Navigation.setDefaultOptions({
+    statusBar: {
+      backgroundColor: '#4d089a'
+    },
+    topBar: {
+      title: {
+        color: 'white'
+      },
+      backButton: {
+        color: 'white'
+      },
+      background: {
+        color: '#4d089a'
+      }
+    }
+  });
+  
+  Navigation.events().registerAppLaunchedListener(async () => {
+    Navigation.setRoot({
+      root: {
+        stack: {
+          children: [
+            {
+              component: {
+                name: 'Home'
+              }
+            }
+          ]
+        }
+      }
+    });
+  });
+  
   const styles = StyleSheet.create({
     root: {
       flex: 1,
@@ -36,20 +95,3 @@ const HomeScreen = (props) => {
       backgroundColor: 'whitesmoke'
     }
   });
-
-Navigation.registerComponent('Home', () => HomeScreen);
-Navigation.events().registerAppLaunchedListener(() => {
-   Navigation.setRoot({
-     root: {
-       stack: {
-         children: [
-           {
-             component: {
-               name: 'Home'
-             }
-           }
-         ]
-       }
-     }
-  });
-});
