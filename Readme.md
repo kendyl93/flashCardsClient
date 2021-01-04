@@ -8,3 +8,8 @@
 ## Debugging
 
 1. Run react devtools `react-devtools`.
+
+### Problems
+
+- App crashes without any errors: type `./gradlew clean` in `/android` directory.
+- Maximum call stack exceeded(shile trying to install deps): `npm cache clean --force`
