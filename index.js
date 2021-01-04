@@ -3,7 +3,7 @@
  */
 
 import {Navigation} from 'react-native-navigation';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native';
 import App from './App';
 
@@ -20,6 +20,24 @@ const LoginScreen = () => {
 };
 
 const HomeScreen = (props) => {
+  useEffect(() => {
+    fetch('http://192.168.1.7:4000/api', {
+      method: 'GET',
+      mode: 'cors',
+      headers: {
+        Authorization:
+          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InAuc3RhbmVja2k5M0BnbWFpbC5jb20iLCJuYW1lIjoiUGF3ZWwifQ.AWmFVS-4OLc8GdlX0p1g0CRnA4iqYl_cg7vDXABWqgI',
+      },
+    })
+      .then((data) => data.json())
+      .then((curentUser) => {
+        console.log({curentUser});
+      })
+      .catch((error) => {
+        debugger;
+        console.error(error);
+      });
+  }, []);
   return (
     <View style={styles.root}>
       <Text>Hello React Native Navigation 👋</Text>
