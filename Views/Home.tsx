@@ -13,23 +13,30 @@ const styles = StyleSheet.create({
 
 const HomeScreen = (props) => {
   useEffect(() => {
-    fetch('http://192.168.1.7:4000/api', {
-      method: 'GET',
-      mode: 'cors',
-      headers: {
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InAuc3RhbmVja2k5M0BnbWFpbC5jb20iLCJuYW1lIjoiUGF3ZWwifQ.AWmFVS-4OLc8GdlX0p1g0CRnA4iqYl_cg7vDXABWqgI',
-      },
-    })
-      .then((data) => data.json())
-      .then((curentUser) => {
-        console.log({curentUser});
-      })
-      .catch((error) => {
-        debugger;
-        console.error(error);
+    const fetchCurrentUser = async () => {
+      const currentUserData = await fetch('http://192.168.1.7:4000/api', {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+          Authorization:
+            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InAuc3RhbmVja2k5M0BnbWFpbC5jb20iLCJuYW1lIjoiUGF3ZWwifQ.AWmFVS-4OLc8GdlX0p1g0CRnA4iqYl_cg7vDXABWqgI',
+        },
       });
+
+      const currentUser = await currentUserData.json();
+
+      console.log({currentUser});
+
+      return;
+    };
+
+    try {
+      fetchCurrentUser();
+    } catch (error) {
+      console.error(error);
+    }
   }, []);
+
   return (
     <View style={styles.root}>
       <Text>Hello React Native Navigation 👋</Text>
@@ -48,6 +55,7 @@ const HomeScreen = (props) => {
     </View>
   );
 };
+
 HomeScreen.options = {
   topBar: {
     title: {
