@@ -18,15 +18,4 @@ const SettingsScreen = () => {
   );
 };
 
-SettingsScreen.options = {
-  topBar: {
-    title: {
-      text: 'Settings',
-    },
-  },
-  bottomTab: {
-    text: 'Settings',
-  },
-};
-
 export default SettingsScreen;

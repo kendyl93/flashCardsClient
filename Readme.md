@@ -7,6 +7,7 @@
 
 ## Debugging
 
+0. `adb reverse tcp:8097 tcp:8097`
 1. Run react devtools `react-devtools`.
 
 ### Problems

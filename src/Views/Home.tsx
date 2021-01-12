@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import {View, Text, Button, StyleSheet} from 'react-native';
-import {Navigation} from 'react-native-navigation';
 
 const styles = StyleSheet.create({
   root: {
@@ -41,30 +40,9 @@ const HomeScreen = (props) => {
     <View style={styles.root}>
       <Text>Hello React Native Navigation 👋</Text>
 
-      <Button
-        title="Push Settings Screen"
-        color="#710ce3"
-        onPress={() =>
-          Navigation.push(props.componentId, {
-            component: {
-              name: 'Settings',
-            },
-          })
-        }
-      />
+      <Button title="Push Settings Screen" color="#710ce3" onPress={() => {}} />
     </View>
   );
-};
-
-HomeScreen.options = {
-  topBar: {
-    title: {
-      text: 'Home',
-    },
-  },
-  bottomTab: {
-    text: 'Home',
-  },
 };
 
 export default HomeScreen;
