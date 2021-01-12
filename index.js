@@ -3,9 +3,9 @@
  */
 
 import {Navigation} from 'react-native-navigation';
-import HomeScreen from './Views/Home';
-import SettingsScreen from './Views/Settings';
-import LoginScreen, {loginRoot} from './Views/Login';
+import HomeScreen from './src/Views/Home';
+import SettingsScreen from './src/Views/Settings';
+import LoginScreen, {loginRoot} from './src/Views/Login';
 
 Navigation.registerComponent('Login', () => LoginScreen);
 Navigation.registerComponent('Home', () => HomeScreen);

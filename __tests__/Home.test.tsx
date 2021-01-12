@@ -5,7 +5,7 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import HomeScreen from '../Views/Home';
+import HomeScreen from '../src/Views/Home';
 
 describe('HomeScreen', () => {
   it('renders correctly', async () => {
