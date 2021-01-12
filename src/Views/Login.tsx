@@ -10,12 +10,16 @@ const styles = StyleSheet.create({
   },
 });
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation}) => {
   return (
     <View style={styles.root}>
       <Text>Please clock to login</Text>
 
-      <Button title="Login" color="#710ce3" onPress={() => {}} />
+      <Button
+        title="Go to the Home page"
+        onPress={() => navigation.navigate('Home')}
+      />
+      <Button title="Go back" onPress={() => navigation.goBack()} />
     </View>
   );
 };

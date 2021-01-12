@@ -3,29 +3,23 @@
  */
 
 import React from 'react';
-import {StyleSheet, View, Text, StatusBar} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import HomeScreen from './src/Views/Home';
+import LoginScreen from './src/Views/Login';
 
-declare const global: {HermesInternal: null | {}};
+const Stack = createStackNavigator();
 
 const App = () => {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <View>
-        <Text style={styles.sectionDescription}>FlashCards Client</Text>
-      </View>
-    </>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  sectionDescription: {
-    backgroundColor: Colors.light,
-    marginTop: 50,
-    fontSize: 42,
-  },
-});
 
 export default App;

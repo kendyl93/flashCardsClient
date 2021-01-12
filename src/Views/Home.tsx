@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const HomeScreen = (props) => {
+const HomeScreen = ({navigation}) => {
   useEffect(() => {
     const fetchCurrentUser = async () => {
       const currentUserData = await fetch('http://192.168.1.7:4000/api', {
@@ -38,9 +38,14 @@ const HomeScreen = (props) => {
 
   return (
     <View style={styles.root}>
-      <Text>Hello React Native Navigation 👋</Text>
+      <Text>Hello from HOME 👋</Text>
 
-      <Button title="Push Settings Screen" color="#710ce3" onPress={() => {}} />
+      <Button
+        title="Go to the login page"
+        color="#710ce3"
+        onPress={() => navigation.navigate('Login')}
+      />
+      <Button title="Go back" onPress={() => navigation.goBack()} />
     </View>
   );
 };
