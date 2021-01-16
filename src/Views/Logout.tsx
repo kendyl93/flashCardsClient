@@ -10,14 +10,15 @@ const styles = StyleSheet.create({
   },
 });
 
-const LoginScreen = ({setUserToken}) => {
+const LogoutScreen = ({navigation, setUserToken}) => {
   return (
     <View style={styles.root}>
-      <Text>Please clock to login</Text>
+      <Text>Please clock to Logout</Text>
 
-      <Button title="Login" onPress={() => setUserToken(true)} />
+      <Button title="Logout" onPress={() => setUserToken(false)} />
+      <Button title="Go back" onPress={() => navigation.goBack()} />
     </View>
   );
 };
 
-export default LoginScreen;
+export default LogoutScreen;
