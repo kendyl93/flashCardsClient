@@ -8,6 +8,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import HomeScreen from './src/Views/Home';
+import SettingsScreen from './src/Views/Settings';
 import LoginScreen from './src/Views/Login';
 
 const Tab = createBottomTabNavigator();
@@ -24,6 +25,8 @@ const App = () => {
               iconName = focused ? 'home' : 'home';
             } else if (route.name === 'Login') {
               iconName = focused ? 'log-in' : 'log-in';
+            } else if (route.name === 'Settings') {
+              iconName = focused ? 'settings' : 'settings';
             }
 
             // You can return any component that you like here!
@@ -36,6 +39,7 @@ const App = () => {
         }}>
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Login" component={LoginScreen} />
+        <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
